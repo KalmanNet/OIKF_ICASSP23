@@ -1,0 +1,40 @@
+def plot_MSE(r_squared_vec_dB, P_MSE_dB, P_sigma_dB,scl,p):
+
+  plt.figure(figsize=(16, 6))
+  plt.suptitle("MSE plot for p="+str(p)+" and scale="+str(scl), size='20',fontweight="bold",y=1.03)
+ 
+  plt.subplot(1,2,1)
+  plt.plot(r_squared_vec_dB, P_MSE_dB[0,:], 'r--', linewidth=1.5 ,label='Noise floor')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[1,:], '--',color='orange', linewidth=2 ,label='KF')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[2,:], '-o', linewidth=2 ,color='cyan', label='WRKF')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[5,:], '-o',linewidth=2 , color='violet', label=r'$\chi^2-test$')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[3,:],  'g-o', linewidth=2 ,label='OIKF-AM')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[4,:], 'b-o', linewidth=2 ,label='OIKF-EM')
+  plt.xticks(fontsize=17)
+  plt.yticks(fontsize=17)
+  plt.ylabel('MSE [dB]', size='20')
+  plt.xlabel(r"$r^{-2}$ [dB]", size='20')
+  plt.title("noisy data with outliers", size='17')
+  plt.grid()
+  plt.legend(fontsize='13')
+
+  
+  plt.subplot(1,2,2)
+  plt.plot(r_squared_vec_dB, P_MSE_dB[6,:], 'r--',linewidth=1.5 , label='Noise floor')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[7,:], '--',color='orange',linewidth=2 , label='KF')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[8,:], '-o', linewidth=2 ,color='cyan', label='WRKF')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[11,:], '-o',linewidth=2 , color='violet', label=r'$\chi^2-test$')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[10,:], 'b-o',linewidth=2 , label='OIKF-EM')
+  plt.plot(r_squared_vec_dB, P_MSE_dB[9,:],  'g-o', linewidth=2 , label='OIKF-AM')
+  plt.xticks(fontsize=17)
+  plt.yticks(fontsize=17)
+  plt.ylabel('MSE [dB]', size='20')
+  plt.xlabel(r"$r^{-2}$ [dB]", size='20')
+  plt.title("noisy data with outlier", size='17')
+  plt.grid()
+  plt.legend(fontsize='13',loc='lower left')
+
+ 
+  plt.tight_layout()
+  plt.savefig('KF_results_all_noisy_with_outliers.pdf', bbox_inches='tight')
+  plt.show()
