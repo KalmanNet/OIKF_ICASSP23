@@ -24,7 +24,6 @@ def main():
 
   data_GT = np.load('data_GT.npy')
   data_y = np.load('data_y_p='+str(p)+'_scl='+str(scl)+'.npy')
-  print(data_GT.shape)
   N = data_GT.shape[3]
   
   if os.path.isfile('data_y_new_p='+str(p)+"_scl="+str(scl)+'.npy')==True:
@@ -56,7 +55,6 @@ def main():
   P_MSE_dB, P_sigma_dB = MSE(time_t, data_GT[:,:,:,0:N], data_y[:,0,:,:,0:N], data_y[:,1,:,:,0:N],
                               x_hat_noisy[:,:,:,0:N], x_hat_noisy_with_outliers[:,:,:,0:N], len_r_vec)
  
-  print(P_MSE_dB.shape)
   plot_MSE(r_squared_vec_dB, P_MSE_dB, P_sigma_dB, scl, p)
 
      
