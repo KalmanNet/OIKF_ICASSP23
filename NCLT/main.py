@@ -1,3 +1,11 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from numpy.linalg import inv
+from scipy.stats import chi2, norm
+import os.path
+from tabulate import tabulate
+import scipy.stats as st
+
 def main():
   
   data_GT_x, data_GT_y, data_GPS_x, data_GPS_y, time_GPS, time_GT = call_data()
