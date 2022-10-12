@@ -79,9 +79,11 @@ def OIKF_AM(data, x_init, P_init, F, H, R, Q, I, r_squared):
       P_pred = F @ P[:,:,n-1]  @ F.transpose() + Q
       y = data[:,n:n+1]
       dy = y - H @ x_pred
-      gamma_pos = np.maximum((dy[0,0]**2) - r_squared[0,0],0)
-      gamma_vel = np.maximum((dy[1,0]**2) - r_squared[1,0],0)
-
+#       gamma_pos = np.maximum((dy[0,0]**2) - r_squared[0,0],0)
+#       gamma_vel = np.maximum((dy[1,0]**2) - r_squared[1,0],0)
+      gamma_pos = 0
+      gamma_vel = 0 
+        
       for i in range(0,N-1):
         R = np.array([[r_squared[0,0]+gamma_pos,0],[0,r_squared[1,0]+gamma_vel]])
         S = H @ P_pred @ H.transpose() + R
