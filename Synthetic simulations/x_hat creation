@@ -1,4 +1,4 @@
-def call_KFs(data, r_squared_vec,  del_t, time_t):
+def x_hat_create(data, r_squared_vec,  del_t, time_t):
 
   N = data.shape[4]
   len_r_vec = data.shape[3]
