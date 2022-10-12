@@ -57,9 +57,7 @@ def main():
                               x_hat_noisy[:,:,:,0:N], x_hat_noisy_with_outliers[:,:,:,0:N], len_r_vec)
  
   print(P_MSE_dB.shape)
-  plot_MSE(r_squared_vec_dB, P_MSE_dB, P_sigma_dB,scl,p)
-
-
+  plot_MSE(r_squared_vec_dB, P_MSE_dB, P_sigma_dB, scl, p)
 
      
 if __name__ == "__main__":
