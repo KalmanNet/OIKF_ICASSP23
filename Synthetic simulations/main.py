@@ -26,20 +26,6 @@ def main():
   data_y = np.load('data_y_p='+str(p)+'_scl='+str(scl)+'.npy')
   N = data_GT.shape[3]
   
-  if os.path.isfile('data_y_new_p='+str(p)+"_scl="+str(scl)+'.npy')==True:
-    data_y_new   = np.load('data_y_new_p='+str(p)+"_scl="+str(scl)+'.npy')
-  else:
-  
-    data_y_new = data_y
-    data_y_new[1,1,:,:,:]=data_y_new[1,0,:,:,:]
-    for j in range(data_y.shape[4]):
-      for i in range(len(r_squared_vec)):
-          outliers = bernoulli.rvs(p, size=len(time_t))
-          index = np.where(outliers == 1)[0]
-          ray = rayleigh.rvs(size=len(index),scale=scl)
-          data_y_new[1,1,index,i,j] = data_y[1,0,index,i,j] + ray
-
-    np.save('data_y_new_p='+str(p)+"_scl="+str(scl)+'.npy', data_y_new)
     
   if (os.path.isfile('x_hat_noisy.npy')==True and os.path.isfile('x_hat_noisy_with_outliers.npy')==True):
     
