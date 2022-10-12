@@ -22,13 +22,10 @@ def main():
   end_time = 10
   time_t = np.linspace(0, end_time,  int((end_time/del_t))+1)
 
-
-
   data_GT = np.load('data_GT.npy')
   data_y = np.load('data_y_p='+str(p)+'_scl='+str(scl)+'.npy')
   print(data_GT.shape)
   N = data_GT.shape[3]
-  
   
   if os.path.isfile('data_y_new_p='+str(p)+"_scl="+str(scl)+'.npy')==True:
     data_y_new   = np.load('data_y_new_p='+str(p)+"_scl="+str(scl)+'.npy')
@@ -52,8 +49,7 @@ def main():
 
   else:
 
-    x_hat_noisy, x_hat_noisy_with_outliers= create_data_2_order(data_y[:,:,:,:,0:N], r_squared_vec,del_t, time_t)
- 
+    x_hat_noisy, x_hat_noisy_with_outliers = x_hat_create(data_y[:,:,:,:,0:N], r_squared_vec,del_t, time_t)
  
   len_r_vec = len(r_squared_vec)
 
